@@ -1,6 +1,7 @@
 import { Suspense } from 'react';
 import { Route, Routes, useParams } from 'react-router-dom';
 import ListSkeleton from '../../skeleton/ListSkeleton';
+import ProductSkeleton from '../../skeleton/ProductSkeleton';
 import Product from './product';
 import ProductList from './ProductList';
 
@@ -14,11 +15,11 @@ const Products = () => {
   }
 
   return (
-    <div className='flex gap-4'>
+    <div className='flex gap-4 py-4'>
       <Suspense fallback={<ListSkeleton />}>
         <ProductList category={category} />
       </Suspense>
-      <Suspense fallback={<Loading text='product 로딩' />}>
+      <Suspense fallback={<ProductSkeleton />}>
         <Routes>
           <Route path='/:id' element={<Product />} />
         </Routes>

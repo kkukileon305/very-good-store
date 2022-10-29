@@ -29,7 +29,7 @@ const GlobalNav = () => {
 
   const checkIsCategory = useCallback(
     (category: string) => {
-      if (pathname === `/${category}` || (pathname.includes(category) && pathname.split('').filter(char => char === '/').length > 1)) {
+      if (pathname === `/${category}` || pathname.includes(`/${category}/`)) {
         return true;
       } else {
         return false;
@@ -39,28 +39,26 @@ const GlobalNav = () => {
   );
 
   return (
-    <nav>
-      <div>
-        <div className='border-b-[1px] border-gray-300'>
-          <h1 className='max-w-[1040px] mx-auto p-4 font-bold text-xl'>
-            <Link to={'/'}>Very Good App</Link>
-          </h1>
-        </div>
-        <ul className='max-w-[1040px] mx-auto p-4 flex flex-wrap gap-y-2 gap-x-4 mt-2'>
-          {categories.map(category => (
-            <li key={category}>
-              <Link
-                className={`block font-bold px-4 py-2 border-[1px]  rounded-full transition-all
+    <nav className='border-b-[1px]'>
+      <div className='border-b-[1px] border-gray-300'>
+        <h1 className='max-w-[1040px] mx-auto p-4 font-bold text-xl'>
+          <Link to={'/'}>Very Good App</Link>
+        </h1>
+      </div>
+      <ul className='max-w-[1040px] mx-auto p-4 flex flex-wrap gap-y-2 gap-x-4 mt-2'>
+        {categories.map(category => (
+          <li key={category}>
+            <Link
+              className={`block font-bold px-4 py-2 border-[1px]  rounded-full transition-all
                 ${checkIsCategory(category) ? 'text-white bg-gray-600 border-gray-600' : 'text-gray-300 hover:text-gray-600 border-gray-300 hover:border-gray-600'}
               `}
-                to={category}
-              >
-                {category}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </div>
+              to={category}
+            >
+              {category}
+            </Link>
+          </li>
+        ))}
+      </ul>
     </nav>
   );
 };

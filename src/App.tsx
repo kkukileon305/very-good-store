@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
-import Main from '.';
+import Main from './pages';
+import Footer from './pages/Footer';
 import GlobalNav from './pages/GlobalNav';
 import Products from './pages/products';
 
@@ -13,6 +14,7 @@ const App = () => {
           <Route path='/:category/*' element={<Products />} />
         </Routes>
       </div>
+      <Footer />
     </>
   );
 };
