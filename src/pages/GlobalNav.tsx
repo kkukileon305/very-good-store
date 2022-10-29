@@ -1,3 +1,4 @@
+import { useCallback, useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 const categories = [
@@ -26,6 +27,17 @@ const categories = [
 const GlobalNav = () => {
   const { pathname } = useLocation();
 
+  const checkIsCategory = useCallback(
+    (category: string) => {
+      if (pathname === `/${category}` || (pathname.includes(category) && pathname.split('').filter(char => char === '/').length > 1)) {
+        return true;
+      } else {
+        return false;
+      }
+    },
+    [pathname]
+  );
+
   return (
     <nav>
       <div>
@@ -39,7 +51,7 @@ const GlobalNav = () => {
             <li key={category}>
               <Link
                 className={`block font-bold px-4 py-2 border-[1px]  rounded-full transition-all
-                ${pathname.includes(category) ? 'text-white bg-gray-600 border-gray-600' : 'text-gray-300 hover:text-gray-600 border-gray-300 hover:border-gray-600'}
+                ${checkIsCategory(category) ? 'text-white bg-gray-600 border-gray-600' : 'text-gray-300 hover:text-gray-600 border-gray-300 hover:border-gray-600'}
               `}
                 to={category}
               >
