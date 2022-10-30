@@ -14,14 +14,14 @@ const Products = () => {
   }
 
   return (
-    <div className='flex gap-4 py-4'>
+    <div className='flex gap-4 py-4 overflow-hidden'>
       <Suspense fallback={<ListSkeleton />}>
         <ProductList category={category} />
       </Suspense>
       <Suspense fallback={<ProductSkeleton />}>
         <Routes>
           <Route path='/:id' element={<Product />} />
-          <Route path='/' element={<ProductMain />} />
+          <Route path='/' element={<ProductMain category={category} />} />
         </Routes>
       </Suspense>
     </div>

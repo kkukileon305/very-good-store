@@ -19,7 +19,7 @@ const ProductList = ({ category }: ProductListProps) => {
   }
 
   return (
-    <ul className='w-[200px] break-keep border-r pr-4'>
+    <ul className='min-w-[200px] w-[200px] break-keep border-r pr-4'>
       {data.products.map(product => (
         <li key={product.id}>
           <Link
