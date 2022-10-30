@@ -1,1 +1,1 @@
-# swr과 suspense를 활용한 Data fetching을 이용한 쇼핑몰 앱
+# swr과 suspense를 활용하여 데이터를 fetching하는 쇼핑몰 앱
