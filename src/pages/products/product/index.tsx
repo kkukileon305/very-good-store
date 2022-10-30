@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import useSWR from 'swr';
 import { Product } from '../../../interface';
@@ -27,7 +28,9 @@ const ProductPage = () => {
       <p className='text-gray-600 mt-2 py-4 border-t'>{data.description}</p>
       <div className='flex flex-col items-end'>
         <p className='font-bold text-3xl'>${data.price}</p>
-        <p className='px-4 py-2 font-bold text-white text-right bg-gray-600 rounded-full my-6 cursor-pointer'>Get Cart!</p>
+        <Link to={'/cart'} className='px-4 py-2 font-bold text-white text-right bg-gray-600 rounded-full my-6 cursor-pointer'>
+          Get Cart!
+        </Link>
       </div>
     </div>
   );

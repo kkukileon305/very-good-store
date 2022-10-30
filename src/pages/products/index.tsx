@@ -4,8 +4,7 @@ import ListSkeleton from '../../skeleton/ListSkeleton';
 import ProductSkeleton from '../../skeleton/ProductSkeleton';
 import Product from './product';
 import ProductList from './ProductList';
-
-const Loading = ({ text }: { text: string }) => <p>{text}</p>;
+import ProductMain from './ProductMain';
 
 const Products = () => {
   const { category } = useParams<{ category: string }>();
@@ -22,6 +21,7 @@ const Products = () => {
       <Suspense fallback={<ProductSkeleton />}>
         <Routes>
           <Route path='/:id' element={<Product />} />
+          <Route path='/' element={<ProductMain />} />
         </Routes>
       </Suspense>
     </div>

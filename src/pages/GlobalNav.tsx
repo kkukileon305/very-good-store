@@ -1,30 +1,10 @@
 import { useCallback, useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-
-const categories = [
-  'smartphones',
-  'laptops',
-  'fragrances',
-  'skincare',
-  'groceries',
-  'home-decoration',
-  'furniture',
-  'tops',
-  'womens-dresses',
-  'womens-shoes',
-  'mens-shirts',
-  'mens-shoes',
-  'mens-watches',
-  'womens-watches',
-  'womens-bags',
-  'womens-jewellery',
-  'sunglasses',
-  'automotive',
-  'motorcycle',
-  'lighting',
-];
+import useSWR from 'swr';
+import { fetcher } from './products/ProductList';
 
 const GlobalNav = () => {
+  const { data: categories } = useSWR<string[]>('https://dummyjson.com/products/categories', fetcher, { suspense: true });
   const { pathname } = useLocation();
 
   const checkIsCategory = useCallback(
@@ -38,14 +18,13 @@ const GlobalNav = () => {
     [pathname]
   );
 
+  if (!categories) {
+    return <nav>통신 실패</nav>;
+  }
+
   return (
     <nav className='border-b-[1px]'>
-      <div className='border-b-[1px] border-gray-300'>
-        <h1 className='max-w-[1040px] mx-auto p-4 font-bold text-xl'>
-          <Link to={'/'}>Very Good App</Link>
-        </h1>
-      </div>
-      <ul className='max-w-[1040px] mx-auto p-4 flex flex-wrap gap-y-2 gap-x-4 mt-2'>
+      <ul className='max-w-[1040px] mx-auto p-4 flex flex-wrap gap-y-2 gap-x-4'>
         {categories.map(category => (
           <li key={category}>
             <Link
