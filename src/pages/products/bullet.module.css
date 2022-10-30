@@ -1,0 +1,11 @@
+.bullet {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2rem;
+  height: 2rem;
+  transition: 0.3s;
+  background-color: white;
+  border-radius: 0.5rem;
+  border: 1px solid gray;
+}

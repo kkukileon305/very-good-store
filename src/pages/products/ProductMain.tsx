@@ -1,11 +1,13 @@
-import useSWR from 'swr';
+import { useNavigate } from 'react-router-dom';
+import { Navigation, Pagination, Autoplay } from 'swiper';
 import { SwiperSlide, Swiper } from 'swiper/react';
-import { Navigation, Pagination } from 'swiper';
+import useSWR from 'swr';
+import { BsArrowRightShort, BsArrowLeftShort } from 'react-icons/bs';
 import { ProductsResponse } from '../../interface';
 import getFirstUpperString from '../../utils/getFirstUpperString';
 import { fetcher } from './ProductList';
-import { useNavigate } from 'react-router-dom';
 import 'swiper/css/pagination';
+import styles from './bullet.module.css';
 
 interface ProductMainProps {
   category: string;
@@ -24,9 +26,9 @@ const ProductMain = ({ category }: ProductMainProps) => {
       <h2 className='font-bold text-2xl'>{getFirstUpperString(category)}</h2>
       <Swiper //
         slidesPerView={'auto'}
-        modules={[Navigation, Pagination]}
+        modules={[Navigation, Pagination, Autoplay]}
         spaceBetween={20}
-        className='w-full mt-4 relative'
+        className='w-full my-16 relative'
         loop
         navigation={{
           nextEl: 'button.next',
@@ -34,7 +36,10 @@ const ProductMain = ({ category }: ProductMainProps) => {
         }}
         pagination={{
           el: 'div.bullet',
+          renderBullet: (index, className) => `<div class="${className} ${styles.bullet}">${index + 1}</div>`,
+          clickable: true,
         }}
+        autoplay
       >
         {data.products.map(product => (
           <SwiperSlide //
@@ -42,7 +47,7 @@ const ProductMain = ({ category }: ProductMainProps) => {
             key={product.id}
             onClick={() => navigate(`/${category}/${product.id}`)}
           >
-            <img className='aspect-square object-cover mb-4' src={product.thumbnail} alt={product.title} />
+            <img className='min-h-[200px] aspect-square object-cover mb-4' src={product.thumbnail} alt={product.title} />
             <div className='p-2'>
               <h3 className='font-bold'>{getFirstUpperString(product.title)}</h3>
               <p className='text-gray-300 mt-4'>{getFirstUpperString(product.description)}</p>
@@ -51,10 +56,14 @@ const ProductMain = ({ category }: ProductMainProps) => {
         ))}
       </Swiper>
 
-      <div className='flex justify-center items-center gap-16 mt-12'>
-        <button className='font-bold prev'>Prev</button>
-        <div className='bullet flex justify-center gap-4' />
-        <button className='font-bold next'>Next</button>
+      <div className='flex justify-center items-center gap-12 mt-12'>
+        <button className='font-bold prev'>
+          <BsArrowLeftShort size={20} />
+        </button>
+        <div className='bullet !w-fit flex justify-center gap-4' />
+        <button className='font-bold next'>
+          <BsArrowRightShort size={20} />
+        </button>
       </div>
     </div>
   );

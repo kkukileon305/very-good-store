@@ -11,9 +11,12 @@ const App = () => {
   return (
     <>
       <div className='border-b-[1px] border-gray-300'>
-        <h1 className='max-w-[1040px] mx-auto p-4 font-bold text-xl'>
-          <Link to={'/'}>Very Good App</Link>
-        </h1>
+        <div className='max-w-[1040px] mx-auto p-4 flex justify-between items-end'>
+          <h1 className='font-bold text-xl'>
+            <Link to={'/'}>Very Good App</Link>
+          </h1>
+          <Link to='/cart'>Cart</Link>
+        </div>
       </div>
       <Suspense fallback={<NavSkeleton />}>
         <GlobalNav />

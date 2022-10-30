@@ -6,13 +6,15 @@ interface CartItemProps {
 
 const CartItem = ({ product }: CartItemProps) => {
   return (
-    <li className='p-2 mb-4 border rounded-md'>
-      <h4 className='font-bold border-b pb-2'>{product.title}</h4>
-      <div className='flex justify-between pt-4'>
-        <p>{product.price}</p>
-        <p>{product.quantity}</p>
+    <li className='p-2 mb-4 border rounded-md flex items-center justify-between'>
+      <div>
+        <h4 className='font-bold pb-2'>{product.title}</h4>
+        <p>Quantity: {product.quantity}</p>
       </div>
-      <p className='text-right'>{product.total}</p>
+      <p className='text-right font-bold text-xl flex gap-1 items-center'>
+        <span className='font-light text-sm'>$</span>
+        {product.total}
+      </p>
     </li>
   );
 };

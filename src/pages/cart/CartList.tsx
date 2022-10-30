@@ -1,5 +1,4 @@
 import useSWR from 'swr';
-import { SwiperSlide, Swiper } from 'swiper/react';
 import { CartResponse } from '../../interface';
 import { fetcher } from '../products/ProductList';
 import CartItem from './CartItem';
