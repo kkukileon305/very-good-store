@@ -14,7 +14,7 @@ const Products = () => {
   }
 
   return (
-    <div className='flex gap-4 py-4 overflow-hidden'>
+    <div className='md:flex gap-4 py-4 overflow-hidden'>
       <Suspense fallback={<ListSkeleton />}>
         <ProductList category={category} />
       </Suspense>

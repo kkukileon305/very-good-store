@@ -42,13 +42,13 @@ const MainList = () => {
 
   return (
     <>
-      <ul className='flex flex-wrap gap-x-4 gap-y-8'>
+      <ul className='flex flex-wrap md:gap-x-4 gap-y-8'>
         {data
           .map(response => response.products)
           .flat()
           .map((product, idx) => (
             <li //
-              className='w-[calc((100%-2rem)/3)] cursor-pointer translate-y-0 hover:-translate-y-4 transition-all'
+              className='w-full md:w-[calc((100%-2rem)/3)] cursor-pointer translate-y-0 hover:-translate-y-4 transition-all'
               key={product.id}
               onClick={() => navigate(`/${product.category}/${product.id}`)}
               ref={idx === data.map(response => response.products).flat().length - 1 ? setLastLi : null}

@@ -13,7 +13,7 @@ const ProductPage = () => {
   }
 
   return (
-    <div className='flex flex-col w-[calc(100%-216px)]'>
+    <div className='flex flex-col md:w-[calc(100%-216px)]'>
       <h2 className='font-bold text-3xl pb-4 border-b'>{data.title}</h2>
       <div className='py-16 border-b'>
         <img src={data.thumbnail} alt={data.title} className='mx-auto w-[50%] aspect-square object-contain ' />

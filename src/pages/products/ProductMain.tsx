@@ -41,6 +41,7 @@ const ProductMain = ({ category }: ProductMainProps) => {
           clickable: true,
         }}
         autoplay
+        centeredSlides
       >
         {data.products.map(product => (
           <SwiperSlide //

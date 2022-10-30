@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import useSWR from 'swr';
 import { fetcher } from './products/ProductList';

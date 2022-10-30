@@ -1,4 +1,4 @@
-import { Link, useLocation, useParams } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import useSWR from 'swr';
 import { ProductsResponse } from '../../interface';
 
@@ -19,7 +19,7 @@ const ProductList = ({ category }: ProductListProps) => {
   }
 
   return (
-    <ul className='min-w-[200px] w-[200px] break-keep border-r pr-4'>
+    <ul className='md:max-w-[200px] w-full break-keep md:border-r pr-4'>
       {data.products.map(product => (
         <li key={product.id}>
           <Link
