@@ -13,11 +13,17 @@ const CartList = () => {
   }
 
   return (
-    <ul>
-      {data.products.map(product => (
-        <CartItem key={product.id} product={product} />
-      ))}
-    </ul>
+    <>
+      <ul>
+        {data.products.map(product => (
+          <CartItem key={product.id} product={product} />
+        ))}
+      </ul>
+      <p className='text-right'>
+        Total price: <span className='text-xl'>$</span>
+        <span className='font-bold text-3xl'>{data.total}</span>
+      </p>
+    </>
   );
 };
 
