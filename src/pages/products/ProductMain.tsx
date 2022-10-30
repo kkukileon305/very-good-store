@@ -8,6 +8,7 @@ import getFirstUpperString from '../../utils/getFirstUpperString';
 import { fetcher } from './ProductList';
 import 'swiper/css/pagination';
 import styles from './bullet.module.css';
+import ProductItem from '../../components/ProductItem';
 
 interface ProductMainProps {
   category: string;
@@ -47,11 +48,7 @@ const ProductMain = ({ category }: ProductMainProps) => {
             key={product.id}
             onClick={() => navigate(`/${category}/${product.id}`)}
           >
-            <img className='min-h-[200px] aspect-square object-cover mb-4' src={product.thumbnail} alt={product.title} />
-            <div className='p-2'>
-              <h3 className='font-bold'>{getFirstUpperString(product.title)}</h3>
-              <p className='text-gray-300 mt-4'>{getFirstUpperString(product.description)}</p>
-            </div>
+            <ProductItem product={product} />
           </SwiperSlide>
         ))}
       </Swiper>

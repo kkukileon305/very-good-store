@@ -13,7 +13,9 @@ const App = () => {
       <div className='border-b-[1px] border-gray-300'>
         <div className='max-w-[1040px] mx-auto p-4 flex justify-between items-end'>
           <h1 className='font-bold text-xl'>
-            <Link to={'/'}>Very Good App</Link>
+            <Link to={'/'}>
+              Very Good Store <span className='ml-2 text-gray-300 text-sm'>VSG</span>{' '}
+            </Link>
           </h1>
           <Link to='/cart'>Cart</Link>
         </div>
