@@ -1,1 +1,3 @@
-# swr과 suspense를 활용한 Data fetching을 이용한 쇼핑몰 앱
+# React의 Suspense와 SWR 라이브러리를 활용한 쇼핑몰 앱
+
+https://very-good-store.netlify.app
