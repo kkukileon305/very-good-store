@@ -6,7 +6,7 @@ import { fetcher } from '../ProductList';
 
 const ProductPage = () => {
   const { id } = useParams<{ id: string }>();
-  const { data } = useSWR<Product>(`https://dummyjson.com/products/${id}`, fetcher, { suspense: true });
+  const { data } = useSWR<Product>(`https://dummyjson.com/products/${id}`);
 
   if (!data) {
     return <div>잘못된 접근입니다.</div>;

@@ -3,20 +3,15 @@ import { useNavigate } from 'react-router-dom';
 import useInfiniteSWR from 'swr/infinite';
 import ProductItem from '../components/ProductItem';
 import { ProductsResponse } from '../interface';
-import { fetcher } from './products/ProductList';
 import MainSkeleton from '../skeleton/MainSkeleton';
 
 const MainList = () => {
   const navigate = useNavigate();
   const [lastLi, setLastLi] = useState<HTMLLIElement | null>();
-  const { data, setSize, isValidating } = useInfiniteSWR<ProductsResponse>(
-    (pageIndex, previousPageData: ProductsResponse) => {
-      if (previousPageData && !previousPageData.products.length) return null;
-      return `https://dummyjson.com/products?skip=${pageIndex * 12}&limit=12`;
-    },
-    fetcher,
-    { suspense: true }
-  );
+  const { data, setSize, isValidating } = useInfiniteSWR<ProductsResponse>((pageIndex, previousPageData: ProductsResponse) => {
+    if (previousPageData && !previousPageData.products.length) return null;
+    return `https://dummyjson.com/products?skip=${pageIndex * 12}&limit=12`;
+  });
 
   useEffect(() => {
     const observer = new IntersectionObserver(

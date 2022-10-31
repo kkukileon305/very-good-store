@@ -5,7 +5,6 @@ import useSWR from 'swr';
 import { BsArrowRightShort, BsArrowLeftShort } from 'react-icons/bs';
 import { ProductsResponse } from '../../interface';
 import getFirstUpperString from '../../utils/getFirstUpperString';
-import { fetcher } from './ProductList';
 import 'swiper/css/pagination';
 import styles from './bullet.module.css';
 import ProductItem from '../../components/ProductItem';
@@ -15,7 +14,7 @@ interface ProductMainProps {
 }
 
 const ProductMain = ({ category }: ProductMainProps) => {
-  const { data } = useSWR<ProductsResponse>(`https://dummyjson.com/products/category/${category}`, fetcher, { suspense: true });
+  const { data } = useSWR<ProductsResponse>(`https://dummyjson.com/products/category/${category}`);
   const navigate = useNavigate();
 
   if (!data) {

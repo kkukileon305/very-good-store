@@ -10,9 +10,7 @@ export const fetcher = (url: string) => fetch(url).then(res => res.json());
 
 const ProductList = ({ category }: ProductListProps) => {
   const { pathname } = useLocation();
-  const { data } = useSWR<ProductsResponse>(`https://dummyjson.com/products/category/${category}`, fetcher, {
-    suspense: true,
-  });
+  const { data } = useSWR<ProductsResponse>(`https://dummyjson.com/products/category/${category}`);
 
   if (!data) {
     return <h2>데이터가 없습니다.</h2>;
